@@ -74,6 +74,38 @@ int peek(struct stack *ptr, int index)
     }
 }
 
+int stackTop(struct stack *ptr)
+{
+    return ptr -> arr[ptr -> top];
+}
+
+int stackBottom(struct stack *ptr)
+{
+    return ptr -> arr[0];
+}
+
+int findElement(struct stack *ptr, int data)
+{
+    int f = 0;
+    while(ptr -> top != -1)
+    {
+        if(ptr -> arr[ptr -> top] == data)
+        {
+            f = 1;
+            break;
+        }
+        ptr -> top--;
+    }
+    if(f == 1)
+    {
+        printf("\n%d is found", data);
+    }
+    else
+    {
+        printf("\n%d is not found");
+    }
+}
+
 int main()
 {
     struct stack *sp = (struct stack *)malloc(sizeof(struct stack));
@@ -105,5 +137,10 @@ int main()
     {
         printf("The value at position %d is %d\n",i, peek(sp, i));
     }
+    
+    printf("\nThe top most value of this stack is %d\n", stackTop(sp));
+    printf("\nThe bottom most value of this stack is %d\n", stackBottom(sp));
+    
+    findElement(sp, 768);
     return 0;
 }
