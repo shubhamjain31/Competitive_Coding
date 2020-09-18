@@ -102,7 +102,7 @@ int findElement(struct stack *ptr, int data)
     }
     else
     {
-        printf("\n%d is not found");
+        printf("\n%d is not found", data);
     }
 }
 
