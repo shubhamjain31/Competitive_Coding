@@ -1,4 +1,7 @@
-#
+#original: {6, -6,6, 8, 4, -12, 9, 8, -8}
+#canceled out: {6, 9}
+#answer: (6, -6),6, (8, 4, -12), 9,( 8, -8)
+
 class Node:
 	def __init__(self, data):
 		self.data = data
@@ -73,5 +76,5 @@ llist.push(-8)
 print("Linked List is")
 llist.printList()
 
-print()
+print("\n")
 print(llist.remove_zeros_from_linkedlist(llist.head))
