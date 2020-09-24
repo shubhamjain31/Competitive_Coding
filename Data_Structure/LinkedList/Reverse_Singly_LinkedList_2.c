@@ -1,4 +1,4 @@
-//Reverse a linked list by changing the links between the nodes
+//Reverse a linked list without actually reversing
 
 #include<stdio.h>
 #include<stdlib.h>
@@ -19,19 +19,14 @@ void linkedListTraversal(struct node* ptr)
     }
 }
 
-void reverseLinkedList(struct node** ptr)
+void reverseLinkedList(struct node* ptr)
 {
-    struct node *prevNode = NULL;
-    struct node *currNode = *ptr;
-    struct node *nextNode = NULL;
-    while(currNode != NULL)
+    if(ptr == NULL)
     {
-        nextNode = currNode -> next;
-        currNode -> next = prevNode;
-        prevNode = currNode;
-        currNode = nextNode;
-    }
-    *ptr = prevNode;
+        return;
+    }   
+    reverseLinkedList(ptr -> next);
+    printf("%d ", ptr->data);
 }
 
 
@@ -64,8 +59,7 @@ int main()
     printf("List before reversing\n");
     linkedListTraversal(head);
     
-    reverseLinkedList(&head);
     printf("\n\nList after reversing\n");
-    linkedListTraversal(head);
+    reverseLinkedList(head);
     return 0;
 }

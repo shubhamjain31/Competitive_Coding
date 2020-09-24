@@ -1,4 +1,4 @@
-#Reverse a linked list by changing the links between the nodes
+#Reverse a linked list without actually reversing
 
 class Node:
 	def __init__(self, data):
@@ -35,16 +35,11 @@ class SinglyLinkedList:
 		newNode.next = self.head
 		self.head = newNode
 		
-	def reverse(self):
-	 		prevNode= None
-	 		currNode = self.head
-	 		nextNode = None
-	 		while currNode is not None:
-	 			nextNode = currNode.next
-	 			currNode.next = prevNode
-	 			prevNode = currNode
-	 			currNode = nextNode
-	 		self.head = prevNode
+	def reverse(self, temp):
+			if temp == None:
+				return
+			self.reverse(temp.next)
+			print(temp.data,end=' ')
 				
 llist = SinglyLinkedList()
 llist.insert(35)
@@ -56,8 +51,7 @@ print('\nLinked list before reversing')
 llist.printList()
 
 print('\n\nLinked list after reversing')
-llist.reverse()
-llist.printList()
+llist.reverse(llist.head)
 
 if llist.size() == 0:
 	print('No element found')
