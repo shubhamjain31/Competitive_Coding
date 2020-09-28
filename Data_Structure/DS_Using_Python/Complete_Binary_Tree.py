@@ -3,8 +3,8 @@
            /   \
           /     \
          2       3
-        / \     / \
-       4   5   6   7
+        / \     / 
+       4   5   6  
     """
 class CompleteBinaryTree:
 	def __init__(self, data):
@@ -50,7 +50,6 @@ root.insertRight(3)
 root.insertLeft(4)
 #root.insertRight(5)
 #root.insertLeft(6)
-#root.insertRight(7)
 
 nodeCount = root.countNumNodes(root)
 index = 0

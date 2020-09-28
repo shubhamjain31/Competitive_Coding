@@ -1,5 +1,5 @@
 #include<stdio.h>
-#include<stdbool.h>
+#define bool int
 
 struct node
 {
@@ -18,22 +18,21 @@ struct node* createNode(int item)
     return newNode;
 }
 
-//Check if the tree is full
-bool isFullBinaryTree(struct node* root)
+//Function for inorder traversal
+void traverse(struct node* root)
 {
-    if(root == NULL)
+    if(root != NULL)
     {
-        return true;
+        traverse (root -> left);
+        printf("%d ", root -> data);
+        traverse (root -> right);
     }
-    if(root -> left == NULL && root -> right == NULL)
+    else
     {
-        return true;
+        //Making external nodes 
+        root = createNode(-1);
+        printf("%d ", root -> data);
     }
-    if((root -> left) && (root -> right))
-    {
-        return(isFullBinaryTree(root -> left) && isFullBinaryTree(root -> right));
-    }
-    return false;
 }
 
 //Insert data in left child node
@@ -42,6 +41,7 @@ struct node* insertLeft(struct node* root, int item)
     root -> left = createNode(item);
     return root -> left;
 }
+
 
 //Insert data in right child node
 struct node* insertRight(struct node* root, int item)
@@ -57,15 +57,8 @@ int main()
     insertRight(root, 7);
     insertLeft(root -> left, 8);
     insertRight(root -> left, 82);
+    insertLeft(root -> right, 10);
     
-    if(isFullBinaryTree(root))
-    {
-        printf("It is a Full Binary Tree");
-    }
-    else
-    {
-        printf("It is not a Full Binary Tree");
-    }
-    
+    traverse(root);
     return 0;
 }

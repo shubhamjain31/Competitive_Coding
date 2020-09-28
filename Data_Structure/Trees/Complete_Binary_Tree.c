@@ -42,12 +42,14 @@ bool isCompleteBinaryTree(struct node* root, int index, int countNumNodes)
     return(isCompleteBinaryTree(root -> left, 2*index+1, countNumNodes) && isCompleteBinaryTree(root -> right, 2*index+2, countNumNodes));
 }
 
+//Insert data in left child node
 struct node* insertLeft(struct node* root, int item)
 {
     root -> left = createNode(item);
     return root -> left;
 }
 
+//Insert data in right child node
 struct node* insertRight(struct node* root, int item)
 {
     root -> right = createNode(item);

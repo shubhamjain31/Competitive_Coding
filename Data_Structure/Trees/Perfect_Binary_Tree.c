@@ -49,12 +49,14 @@ bool isPerfectBinaryTree(struct node* root, int d, int level)
     return(isPerfectBinaryTree(root -> left, d, level+1) && isPerfectBinaryTree(root -> right, d, level+1));
 }
 
+//Insert data in left child node
 struct node* insertLeft(struct node* root, int item)
 {
     root -> left = createNode(item);
     return root -> left;
 }
 
+//Insert data in right child node
 struct node* insertRight(struct node* root, int item)
 {
     root -> right = createNode(item);
